@@ -1,8 +1,26 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth import authenticate
+from django.http import JsonResponse
+
+
 # Create your views here.
 
-def index(request):
-    if(request.method == 'GET'):
-        print("Mensaje de prueba")
-    return HttpResponse("Trama")
+def datosJson(request):
+    dat={
+        "usr":"",
+    }
+    
+    if (request.method=='GET'):
+        usernombre=request.GET.get('userN')
+        print('usernombre')
+        
+        if((usernombre is not None)): #Consulta no vacia
+            dat={    #Arreglo que contiene los datos de la bd
+               
+            }
+
+        else:
+            dat={"msn":"Usuario o contraseña no encontrada"}
+
+        #dat={"msn": usernombre}
+
+    return JsonResponse(dat)

@@ -1,6 +1,6 @@
-from django.conf.urls import url
-from home.views import index
+from django.urls.conf import path
+from home.views import datosJson
 
 urlpatterns = [
-    url(r'^$', index , name='home'),
+    path('datosJson/', datosJson, name="datosJson")
 ]
