@@ -17,7 +17,7 @@ def datosJson(request):
             print(usernombre)
 
         else:
-            dat={"msn":"Usuario o contraseña no encontrada"}
+            dat={"msn":"Usuario o contraseña no encontradaaaa"}
 
         #dat={"msn": usernombre}
 
