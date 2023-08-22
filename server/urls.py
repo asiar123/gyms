@@ -21,5 +21,5 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^datosJson', include ('home.urls')),
+    url(r'^/', include ('home.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
