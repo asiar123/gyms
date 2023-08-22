@@ -14,9 +14,7 @@ def datosJson(request):
         print(usernombre)
         
         if((usernombre is not None)): #Consulta no vacia
-            dat={    #Arreglo que contiene los datos de la bd
-               
-            }
+            print(usernombre)
 
         else:
             dat={"msn":"Usuario o contraseña no encontrada"}
