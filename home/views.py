@@ -10,7 +10,7 @@ def datosJson(request):
     
     if (request.method=='GET'):
         usernombre=request.GET.get('userN')
-        print('usernombre')
+        print(usernombre)
         
         if((usernombre is not None)): #Consulta no vacia
             dat={    #Arreglo que contiene los datos de la bd
