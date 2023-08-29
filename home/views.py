@@ -8,8 +8,8 @@ def datosJson(request):
         "usr":"",
     }
     
-    if (request.method=='GET'):
-        usernombre=request.GET.get('userN')
+    if (request.method):
+        usernombre=request.GET.get
 
         print("Parametro enviado: ", request.GET.get)
         
