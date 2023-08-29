@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-g$m2k%!e#tbk_lnjw4$sg$v+oq33if79s70*-=+l0)r2jwm1$t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['server-kcpk.onrender.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -77,7 +77,14 @@ import dj_database_url
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'databaseR',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': 5432
+    }
 }
 
 

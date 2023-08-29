@@ -11,7 +11,7 @@ def datosJson(request):
     if (request.method=='GET'):
         usernombre=request.GET.get('userN')
 
-        print("Parametro enviado: ")
+        print("Parametro enviado: ", request.GET.get)
         
         if((usernombre is not None)): #Consulta no vacia
             print(usernombre)
