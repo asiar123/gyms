@@ -3,5 +3,5 @@ from django.urls import path
 from home.views import datosJson
 
 urlpatterns = [
-    path('datosJson/', datosJson, name="index")
+    path('', datosJson, name="index")
 ]
