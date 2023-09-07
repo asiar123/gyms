@@ -77,14 +77,7 @@ import dj_database_url
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'databaseR',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': 5432
-    }
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 

@@ -5,9 +5,9 @@ from ast import literal_eval
 # Create your views here.
 
 def datosJson(request):
-    localIP     = "127.0.0.1"
+    localIP     = "186.99.164.90"
 
-    localPort   = 5000
+    localPort   = 8000
 
     bufferSize  = 1024
 
