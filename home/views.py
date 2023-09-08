@@ -3,24 +3,64 @@ import socket
 from ast import literal_eval
 from django.contrib.auth import authenticate
 import socket
-import time
+from ast import literal_eval
 
 # Create your views here.
 
 def datosJson(request):
     
-    HOST = ''
-    PORT = 2102
-    BUFSIZ = 1024
-    ADDR = (HOST,PORT)
+    localIP     = "192.168.1.8"
 
-    sock = socket.socket( socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind( ADDR)
+    localPort   = 10000
 
-    print('waiting for data on', ADDR)
-    while True:
-        data,addr = sock.recvfrom(BUFSIZ)
-        print('Recv from %s at %s' % (str(addr),time.ctime(time.time())))
-        print(data)
+    bufferSize  = 1024
 
-        sock.close()
+ 
+
+    msgFromServer       = "1"
+
+    bytesToSend         = str.encode(msgFromServer)
+
+ 
+
+    # Create a datagram socket
+
+    UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+
+ 
+
+    # Bind to address and ip
+
+    UDPServerSocket.bind((localIP, localPort))
+
+ 
+
+    print("UDP server up and listening")
+
+ 
+
+    # Listen for incoming datagrams
+
+    while(True):
+
+        bytesAddressPair = UDPServerSocket.recvfrom(bufferSize)
+
+        message = bytesAddressPair[0]
+
+        address = bytesAddressPair[1]
+
+        clientMsg = "Message from Client:{}".format(message)
+        clientIP  = "Client IP Address:{}".format(address)
+    
+    #messajes= Encoding.ASCII.GetString(message)
+    
+        print(message)
+        print(clientMsg)
+        print(clientIP)
+        print(address)
+   
+
+    # Sending a reply to client
+
+        UDPServerSocket.sendto(bytesToSend, address)
+    
