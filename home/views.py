@@ -13,8 +13,7 @@ def datosJson(request):
     
     if (request.method=='GET'):
         usernombre=request.GET.get('userN')
-        password=request.GET.get('passN')
-        user=authenticate(request, username=usernombre, password=password)
+        user=authenticate(request, username=usernombre)
         print(user)
         
         if((user is not None)): #Consulta no vacia
