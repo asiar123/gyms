@@ -4,63 +4,26 @@ from ast import literal_eval
 from django.contrib.auth import authenticate
 import socket
 from ast import literal_eval
+import socket 
 
 # Create your views here.
 
 def datosJson(request):
     
-    localIP     = "192.168.1.8"
+    host , port = 'server-kcpk.onrender.com' , 10000
 
-    localPort   = 10000
+    serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    serversocket.setsockopt(socket.SOL_SOCKET , socket.SO_REUSEADDR , 1)
+    serversocket.bind((host , port))
+    serversocket.listen(1)
+    print('servidor en el puerto',port)
 
-    bufferSize  = 1024
+    while True:
+        connection , address = serversocket.accept()
+        request = connection.recv(1024).decode('utf-8')
+        string_list = request.split(' ')
+        method = string_list[0]
+        requesting_file = string_list[1]
 
- 
-
-    msgFromServer       = "1"
-
-    bytesToSend         = str.encode(msgFromServer)
-
- 
-
-    # Create a datagram socket
-
-    UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-
- 
-
-    # Bind to address and ip
-
-    UDPServerSocket.bind((localIP, localPort))
-
- 
-
-    print("UDP server up and listening")
-
- 
-
-    # Listen for incoming datagrams
-
-    while(True):
-
-        bytesAddressPair = UDPServerSocket.recvfrom(bufferSize)
-
-        message = bytesAddressPair[0]
-
-        address = bytesAddressPair[1]
-
-        clientMsg = "Message from Client:{}".format(message)
-        clientIP  = "Client IP Address:{}".format(address)
-    
-    #messajes= Encoding.ASCII.GetString(message)
-    
-        print(message)
-        print(clientMsg)
-        print(clientIP)
-        print(address)
-   
-
-    # Sending a reply to client
-
-        UDPServerSocket.sendto(bytesToSend, address)
+        print('Client requestttttt',string_list)
     
