@@ -10,7 +10,7 @@ import socket
 
 def datosJson(request):
     
-    host , port = '0.0.0.0' , 10000
+    host , port = '127.0.0.1' , 10000
 
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serversocket.setsockopt(socket.SOL_SOCKET , socket.SO_REUSEADDR , 1)
