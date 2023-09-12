@@ -14,7 +14,7 @@ def datosJson(request):
     }
 
     if (request.method=='GET'):
-        usernombre=request.GET.get('userN')
+        gps=request.GET.get('userN')
         print('usernombre')
 
         if((usernombre is not None)): #Consulta no vacia
@@ -22,10 +22,5 @@ def datosJson(request):
 
             }
 
-        else:
-            dat={"msn":"Usuario o contraseña no encontrada"}
-
-        #dat={"msn": usernombre}
-
-    return JsonResponse(dat)
+    return HttpResponse(user)
     
