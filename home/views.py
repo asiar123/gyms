@@ -9,21 +9,23 @@ import socket
 # Create your views here.
 
 def datosJson(request):
-    
-    host , port = '192.168.1.6' , 56458
+    dat={
+        "usr":"",
+    }
 
-    serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    serversocket.setsockopt(socket.SOL_SOCKET , socket.SO_REUSEADDR , 1)
-    serversocket.bind((host , port))
-    serversocket.listen(1)
-    print('servidor en el puerto',port)
+    if (request.method=='GET'):
+        usernombre=request.GET.get('userN')
+        print('usernombre')
 
-    while True:
-        connection , address = serversocket.accept()
-        request = connection.recv(1024).decode('utf-8')
-        string_list = request.split(' ')
-        method = string_list[0]
-        requesting_file = string_list[1]
+        if((usernombre is not None)): #Consulta no vacia
+            dat={    #Arreglo que contiene los datos de la bd
 
-        print('Client requestttttt',string_list)
+            }
+
+        else:
+            dat={"msn":"Usuario o contraseña no encontrada"}
+
+        #dat={"msn": usernombre}
+
+    return JsonResponse(dat)
     
