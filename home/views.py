@@ -15,12 +15,10 @@ def datosJson(request):
 
     if (request.method=='GET'):
         gps=request.GET.get('userN')
-        print('usernombre')
+        print(gps)
 
-        if((usernombre is not None)): #Consulta no vacia
-            dat={    #Arreglo que contiene los datos de la bd
+        if(gps): #Consulta no vacia
+            print('usernombre')
 
-            }
-
-    return HttpResponse(user)
+    return HttpResponse(gps)
     
