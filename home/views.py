@@ -1,10 +1,4 @@
-from django.http import JsonResponse
-import socket
-from ast import literal_eval
-from django.contrib.auth import authenticate
-import socket
-from ast import literal_eval
-import socket 
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -13,7 +7,7 @@ def datosJson(request):
         "usr":"",
     }
 
-    if (request.method=='GET'):
+    if (request.method):
         gps=request.GET.get('userN')
         print(gps)
 
